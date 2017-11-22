@@ -1,4 +1,8 @@
-
 .title {
-    cursor: pointer;
-}
+  cursor: pointer; }
+
+.example h1 {
+  color: green; }
+
+.drawerPanel a {
+  text-decoration: none; }

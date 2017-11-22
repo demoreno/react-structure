@@ -11,8 +11,7 @@ import IconMenu from 'material-ui/IconMenu';
 import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
-    static muiName = 'FlatButton';
-
+    
     render() {
         return (
             <FlatButton {...this.props} label="Login" />
@@ -35,10 +34,6 @@ const Logged = (props) => (
     </IconMenu>
 );
 
-/**
- * This example uses an [IconButton](/#/components/icon-button) on the left, has a clickable `title`
- * through the `onClick` property, and a [FlatButton](/#/components/flat-button) on the right.
- */
 export default class Header extends React.Component{
 
     constructor(props){
@@ -65,7 +60,10 @@ export default class Header extends React.Component{
                     iconElementRight={this.state.logged ? <Logged /> : <Login />}
                 />
 
-                <Drawer open={this.state.handleDrawer}>
+                <Drawer className="drawerPanel" 
+                        open={this.state.handleDrawer}
+                        docked={false}
+                    >
                     <AppBar
                         title="App"
                         iconElementLeft={<IconButton onClick={this.navigationMenu}><NavigationClose/></IconButton>}
