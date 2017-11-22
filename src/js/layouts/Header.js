@@ -10,12 +10,6 @@ import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
 import { Link } from 'react-router-dom';
 
-const styles = {
-    title: {
-        cursor: 'pointer',
-    },
-};
-
 class Login extends React.Component {
     static muiName = 'FlatButton';
 
@@ -66,7 +60,7 @@ export default class Header extends React.Component{
         return (
             <div>
                 <AppBar
-                    title={<span style={styles.title}>Title</span>}
+                    title={<span className='title'>Title</span>}
                     iconElementLeft={<IconButton onClick={this.navigationMenu}><NavigationMenu/></IconButton>}
                     iconElementRight={this.state.logged ? <Logged /> : <Login />}
                 />
