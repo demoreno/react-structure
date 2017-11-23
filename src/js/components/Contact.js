@@ -7,7 +7,10 @@ export default class Home extends React.Component{
         return (
             <div>
                 <Header/>
-                <h1>Contact</h1>
+                
+                <div className='main-content'>
+                    <h1>Contact</h1>
+                </div>
             </div>
         );
     }

@@ -68,6 +68,7 @@ export default class Header extends React.Component{
                         title="App"
                         iconElementLeft={<IconButton onClick={this.navigationMenu}><NavigationClose/></IconButton>}
                     />
+                    <MenuItem onClick={this.navigationMenu}><Link to='/home'>Home</Link></MenuItem>
                     <MenuItem onClick={this.navigationMenu}><Link to='/about'>About</Link></MenuItem>
                     <MenuItem onClick={this.navigationMenu}><Link to='/contact'>Contact</Link></MenuItem>
                 </Drawer>

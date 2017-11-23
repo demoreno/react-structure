@@ -17,9 +17,17 @@ gulp.task('js', function(){
 });
 
 gulp.task("watch", () => {
+  console.log('watch');
   gulp.watch([
     "./src/css/**/*.scss",    
   ], ["sass"]);
 });
 
-gulp.task('default', ['sass'])
+gulp.task('webserver', function() {
+  console.log('webserver');
+  connect.server({
+    livereload: true
+  });
+});
+
+gulp.task('default', ['sass','watch','webserver'])
