@@ -1,7 +1,14 @@
 import React from 'react';
-import Header from './../layouts/Header';
+import Header from './../containers/Header';
+import { requestUsers } from './../actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default class Home extends React.Component{
+class Contact extends React.Component{
+
+    componentDidMount(){        
+        this.props.requestUsers();
+    }
 
     render(){
         return (
@@ -14,5 +21,14 @@ export default class Home extends React.Component{
             </div>
         );
     }
-
 }
+
+const mapStateToProps = state => ({
+    profile : state.profile,
+    users : state.users
+});
+
+const mapDispactchToProps = dispatch => 
+    bindActionCreators({requestUsers} , dispatch);
+
+export default connect(mapStateToProps , mapDispactchToProps)(Contact);

@@ -1,46 +1,48 @@
 import React from 'react';
-import Header from './../layouts/Header';
+import Header from './../containers/Header';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export default class Home extends React.Component{
+import { requestProfile, requestUsers } from './../actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+class Home extends React.Component{
 
     constructor(props) {
         super(props);
 
-        this.handleOpen = this.handleOpen.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-
+        this.handleModal = this.handleModal.bind(this);
+        
         this.state = {
             open : false
         };
     }
 
-    handleOpen() {
-        this.setState({open: true});
+    componentDidMount(){
+        this.props.requestProfile();        
+    }
+
+    handleModal() {
+        this.setState({open: !this.state.open});
     }
     
-    handleClose(){
-        this.setState({open: false});
-    };
-
-
     render(){
-
+        const { profile } = this.props;
         const actions = [
             <FlatButton
               label="Cancel"
               primary={true}
-              onClick={this.handleClose}
+              onClick={this.handleModal}
             />,
         
             <FlatButton
               label="Submit"
               primary={true}
               disabled={true}
-              onClick={this.handleClose}
+              onClick={this.handleModal}
             />
         ];
 
@@ -68,19 +70,27 @@ export default class Home extends React.Component{
                         </Dialog>
 
                         <CardActions>
-                        <RaisedButton label="Modal Dialog" onClick={this.handleOpen} />
+                        <RaisedButton label="Modal Dialog" onClick={this.handleModal} />
                             <FlatButton label="Action2" />
                         </CardActions>
 
                         <CardText expandable={true}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                            <h1>{profile.title}</h1>
                         </CardText>
+                        
                     </Card>
                 </div>                
             </div>
         );
     }
 }
+
+const mapStateToProps = state => ({
+    profile : state.profile,
+    users : state.users
+});
+
+const mapDispactchToProps = dispatch => 
+    bindActionCreators({requestProfile, requestUsers} , dispatch);
+
+export default connect(mapStateToProps , mapDispactchToProps)(Home);

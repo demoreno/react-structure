@@ -25,9 +25,9 @@ gulp.task("watch", () => {
 
 gulp.task('webserver', function() {
   console.log('webserver');
-  connect.server({
+  /*connect.server({
     livereload: true
-  });
+  });*/
 });
 
 gulp.task('default', ['sass','watch','webserver'])

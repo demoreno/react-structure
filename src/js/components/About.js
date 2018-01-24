@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './../layouts/Header';
+import Header from './../containers/Header';
 import {
     Step,
     Stepper,
@@ -8,7 +8,7 @@ import {
   import RaisedButton from 'material-ui/RaisedButton';
   import FlatButton from 'material-ui/FlatButton';
 
-export default class Home extends React.Component{
+export default class About extends React.Component{
 
     constructor(props){
         super(props);

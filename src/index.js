@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter  } from 'react-router-dom';
 import AppRoutes from './js/routes';
 import registerServiceWorker from './registerServiceWorker';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import style from '../src/css/app.css';
+import { Provider } from 'react-redux';
+import  store  from './js/store';
 
 ReactDOM.render(
-    <MuiThemeProvider>
-        <AppRoutes/>
-    </MuiThemeProvider>,
+    <Provider store={store}>
+        <MuiThemeProvider>
+            <AppRoutes/>
+        </MuiThemeProvider>
+    </Provider>,
     document.getElementById('root'));
 registerServiceWorker();
+ 
