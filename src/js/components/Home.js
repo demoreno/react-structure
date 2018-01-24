@@ -4,7 +4,6 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
-
 import { requestProfile, requestUsers } from './../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -17,7 +16,7 @@ class Home extends React.Component{
         this.handleModal = this.handleModal.bind(this);
         
         this.state = {
-            open : false
+            modal : false
         };
     }
 
@@ -26,7 +25,7 @@ class Home extends React.Component{
     }
 
     handleModal() {
-        this.setState({open: !this.state.open});
+        this.setState({modal: !this.state.modal});
     }
     
     render(){
@@ -47,10 +46,7 @@ class Home extends React.Component{
         ];
 
         return (
-            <div>
-                
-                <Header/>
-
+            [<Header/>,
                 <div className='main-content'>
                     <Card>
                         <CardHeader
@@ -59,28 +55,25 @@ class Home extends React.Component{
                             actAsExpander={true}
                             showExpandableButton={true}
                         />
-                
+
                         <Dialog
-                        title="Dialog With Actions"
-                        actions={actions}
-                        modal={true}
-                        open={this.state.open}
-                        >
-                        Only actions can close this dialog.
+                            title="Dialog With Actions"
+                            actions={actions}
+                            modal={true}
+                            open={this.state.modal}> Only actions can close this dialog.
                         </Dialog>
 
                         <CardActions>
-                        <RaisedButton label="Modal Dialog" onClick={this.handleModal} />
+                            <RaisedButton label="Modal Dialog" onClick={this.handleModal} />
                             <FlatButton label="Action2" />
                         </CardActions>
 
                         <CardText expandable={true}>
                             <h1>{profile.title}</h1>
                         </CardText>
-                        
                     </Card>
-                </div>                
-            </div>
+                </div>
+            ]
         );
     }
 }

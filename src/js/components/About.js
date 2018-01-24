@@ -53,8 +53,8 @@ export default class About extends React.Component{
         const contentStyle = {margin: '0 16px'};
 
         return (
-            <div>
-                <Header/>
+            [
+                <Header/>,
                 
                 <div className='main-content'>
 
@@ -109,7 +109,7 @@ export default class About extends React.Component{
                             </div>
                         </div>
                     </div>
-            </div>
+            ]
         );
     }
 }

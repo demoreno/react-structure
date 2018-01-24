@@ -12,7 +12,6 @@ function* fetchProfile(action){
 }
 
 function* fetchUsers(action){
-    console.log('hererere');
     try {        
         const response = yield call(getUsers);           
         yield put(receiveUsers(response.data));       
