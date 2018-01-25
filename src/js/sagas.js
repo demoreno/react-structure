@@ -1,10 +1,11 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
-import { REQUEST_PROFILE, receiveProfile, REQUEST_USERS, receiveUsers } from './actions';
-import { getInfo, getUsers } from './api';
+import { REQUEST_PROFILE, REQUEST_USERS, DELETE_USERS} from './actions/actionsTypes';
+import { receiveProfile, receiveUsers } from './actions/actionCreators';
+import { getInfo, getUsers, removeUser } from './api';
 
 function* fetchProfile(action){    
    try {
-        const response = yield call(getInfo);           
+        const response = yield call(getInfo);
         yield put(receiveProfile(response.data)); 
    } catch (e) {
         console.log(e);
@@ -13,17 +14,28 @@ function* fetchProfile(action){
 
 function* fetchUsers(action){
     try {        
-        const response = yield call(getUsers);           
+        const response = yield call(getUsers);
         yield put(receiveUsers(response.data));       
    } catch (e) {
         console.log(e);
    }
 }
 
+function* deleteUsers(action) {
+    try{
+        const response = yield call(removeUser);
+        let users = [{id : 122}];
+        yield put(receiveUsers(users))
+    }catch (e){
+        console.log(e);
+    }
+}
+
 function* rootSaga() {
     yield [
         takeLatest(REQUEST_PROFILE, fetchProfile),        
-        takeLatest(REQUEST_USERS, fetchUsers)        
+        takeLatest(REQUEST_USERS, fetchUsers),
+        takeLatest(DELETE_USERS, deleteUsers)
     ]    
 }
 

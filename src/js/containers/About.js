@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './../containers/Header';
+import Header from '../components/Header';
 import {
     Step,
     Stepper,
@@ -12,6 +12,11 @@ export default class About extends React.Component{
 
     constructor(props){
         super(props);
+
+        this.handleNext = this.handleNext.bind(this);
+        this.handlePrev = this.handlePrev.bind(this);
+        this.getStepContent = this.getStepContent.bind(this);
+
         this.state = {
             finished: false,
             stepIndex: 0,
@@ -78,31 +83,20 @@ export default class About extends React.Component{
                             <div style={contentStyle}>
                                 {finished ? (
                                     <p>
-                                        <a
-                                            href="#"
-                                            onClick={(event) => {
-                                            event.preventDefault();
-                                            this.setState({stepIndex: 0, finished: false});
-                                            }}
-                                        >
+                                        <a href="#" onClick={(event) => { event.preventDefault();
+                                                this.setState({stepIndex: 0, finished: false});}}>
                                             Click here
                                         </a> to reset the example.
                                     </p>
                                 ) : (
                                     <div>
                                         <p>{this.getStepContent(stepIndex)}</p>
+
                                         <div style={{marginTop: 12}}>
-                                            <FlatButton
-                                                label="Back"
-                                                disabled={stepIndex === 0}
-                                                onClick={this.handlePrev}
-                                                style={{marginRight: 12}}
-                                            />
-                                            <RaisedButton
-                                                label={stepIndex === 2 ? 'Finish' : 'Next'}
-                                                primary={true}
-                                                onClick={this.handleNext}
-                                            />
+                                            <FlatButton label="Back" disabled={stepIndex === 0}
+                                                        onClick={this.handlePrev} style={{marginRight: 12}}/>
+                                            <RaisedButton label={stepIndex === 2 ? 'Finish' : 'Next'}
+                                                          primary={true} onClick={this.handleNext}/>
                                         </div>
                                     </div>
                                 )}

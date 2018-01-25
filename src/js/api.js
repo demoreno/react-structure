@@ -3,7 +3,7 @@ import config from './config';
 
 export function getInfo() {
     
-    return axios.get(config.apiEndPoint.getInfo + 'posts/1', {
+    return axios.get(config.API.getInfo + 'posts/1', {
         headers: {
           'Accept': 'application/json'
         }
@@ -11,5 +11,9 @@ export function getInfo() {
 }
 
 export function getUsers() {    
-    return axios.get(config.apiEndPoint.getUsers);
+    return axios.get(config.API.getUsers);
+}
+
+export function removeUser(){
+    return axios.get(config.API.getUsers);
 }

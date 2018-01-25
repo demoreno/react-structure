@@ -70,7 +70,7 @@ export default class Header extends React.Component{
                     />
                     <MenuItem onClick={this.navigationMenu}><Link to='/home'>Home</Link></MenuItem>
                     <MenuItem onClick={this.navigationMenu}><Link to='/about'>About</Link></MenuItem>
-                    <MenuItem onClick={this.navigationMenu}><Link to='/contact'>Contact</Link></MenuItem>
+                    <MenuItem onClick={this.navigationMenu}><Link to='/users'>Users</Link></MenuItem>
                 </Drawer>
             </div>
         );
