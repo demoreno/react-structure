@@ -15,5 +15,5 @@ export function getUsers() {
 }
 
 export function removeUser(){
-    return axios.get(config.API.getUsers);
+    return [];
 }

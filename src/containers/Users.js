@@ -5,6 +5,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader} from 'material-ui/Card';
 import { requestUsers, deleteUsers } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
+import {CardText} from 'material-ui/Card';
+import TableUsers from './../components/TableUsers';
 
 class Users extends React.Component{
 
@@ -24,6 +26,8 @@ class Users extends React.Component{
     }
 
     render(){
+        const { users } = this.props;
+
         return (
             [
                 <Header/>,
@@ -33,10 +37,16 @@ class Users extends React.Component{
                         <CardHeader title="Users" actAsExpander={true}/>
 
                         <CardActions>
-                            <RaisedButton label="Request Profile" onClick={this.requestUsers} />
+                            <RaisedButton label="Request Users" onClick={this.requestUsers} />
 
                             <RaisedButton label="Drop Users" onClick={this.handleClick} />
                         </CardActions>
+
+                        {users.length > 0 &&
+                            <CardText>
+                                <TableUsers users={users} />
+                            </CardText>
+                        }
 
                     </Card>
                 </div>

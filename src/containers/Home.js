@@ -1,13 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import { requestProfile, requestUsers } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
+import TableUsers from './../components/TableUsers'
+import ProfileInfo from './../components/ProfileInfo';
 
 class Home extends React.Component{
 
@@ -16,8 +17,7 @@ class Home extends React.Component{
 
         this.handleModal = this.handleModal.bind(this);
         this.getProfile = this.getProfile.bind(this);
-        this.renderUsers = this.renderUsers.bind(this);
-        
+
         this.state = {
             modal : false
         };
@@ -32,20 +32,6 @@ class Home extends React.Component{
         this.props.requestProfile();
     }
 
-    renderUsers(key){
-        const { users } = this.props;
-        const user = users[key];
-
-        return (
-            <TableRow>
-                <TableRowColumn>{user.id}</TableRowColumn>
-                <TableRowColumn>{user.email}</TableRowColumn>
-                <TableRowColumn>{user.phone}</TableRowColumn>
-                <TableRowColumn>{user.username}</TableRowColumn>
-            </TableRow>
-        );
-    }
-    
     render(){
         const { profile, users } = this.props;
         const actions = [
@@ -70,27 +56,13 @@ class Home extends React.Component{
 
                         {profile.id &&
                             <CardText>
-                                <p>Id : {profile.id}</p>
-                                <p>Title : {profile.title}</p>
-                                <p>Body : {profile.body}</p>
+                                <ProfileInfo profileInfo={profile}/>
                             </CardText>
                         }
 
                         {users.length > 0 &&
                             <CardText>
-                                <Table>
-                                    <TableHeader>
-                                        <TableRow>
-                                            <TableHeaderColumn>ID</TableHeaderColumn>
-                                            <TableHeaderColumn>Email</TableHeaderColumn>
-                                            <TableHeaderColumn>Phone</TableHeaderColumn>
-                                            <TableHeaderColumn>Username</TableHeaderColumn>
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        {Object.keys(users).map(this.renderUsers)}
-                                    </TableBody>
-                                </Table>
+                                <TableUsers users={users} />
                             </CardText>
                         }
 

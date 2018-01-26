@@ -24,8 +24,7 @@ function* fetchUsers(action){
 function* deleteUsers(action) {
     try{
         const response = yield call(removeUser);
-        let users = [{id : 122}];
-        yield put(receiveUsers(users))
+        yield put(receiveUsers(response))
     }catch (e){
         console.log(e);
     }

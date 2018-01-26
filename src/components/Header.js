@@ -60,16 +60,13 @@ export default class Header extends React.Component{
                     iconElementRight={this.state.logged ? <Logged /> : <Login />}
                 />
 
-                <Drawer className="drawerPanel" 
-                        open={this.state.handleDrawer}
-                        docked={false}
-                    >
-                    <AppBar
-                        title="App"
-                        iconElementLeft={<IconButton onClick={this.navigationMenu}><NavigationClose/></IconButton>}
-                    />
+                <Drawer className="drawerPanel" open={this.state.handleDrawer} docked={false}>
+                    <AppBar title="App" iconElementLeft={
+                        <IconButton onClick={this.navigationMenu}>
+                            <NavigationClose/>
+                        </IconButton>} />
                     <MenuItem onClick={this.navigationMenu}><Link to='/home'>Home</Link></MenuItem>
-                    <MenuItem onClick={this.navigationMenu}><Link to='/about'>About</Link></MenuItem>
+                    {/*<MenuItem onClick={this.navigationMenu}><Link to='/about'>About</Link></MenuItem>*/}
                     <MenuItem onClick={this.navigationMenu}><Link to='/users'>Users</Link></MenuItem>
                 </Drawer>
             </div>
