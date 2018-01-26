@@ -4,7 +4,7 @@ React Structure
 
 ### Prerequisites
 
-To use this project, you'll need NodeJS. Visit http://www.nodejs.org to download and learn more!
+To use this project, you'll need npm. Visit https://www.npmjs.com/ to download and learn more!
 
 ### Installing
 
