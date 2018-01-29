@@ -16,6 +16,8 @@ export default class About extends React.Component{
         this.handleNext = this.handleNext.bind(this);
         this.handlePrev = this.handlePrev.bind(this);
         this.getStepContent = this.getStepContent.bind(this);
+        this.handleNext = this.handleNext.bind(this);
+        this.handlePrev = this.handlePrev.bind(this);
 
         this.state = {
             finished: false,
@@ -23,7 +25,7 @@ export default class About extends React.Component{
         };
     }
     
-    handleNext = () => {
+    handleNext() {
         const {stepIndex} = this.state;
         this.setState({
             stepIndex: stepIndex + 1,
@@ -31,7 +33,7 @@ export default class About extends React.Component{
         });
     };
     
-    handlePrev = () => {
+    handlePrev() {
         const {stepIndex} = this.state;
         if (stepIndex > 0) {
             this.setState({stepIndex: stepIndex - 1});

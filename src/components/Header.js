@@ -54,11 +54,9 @@ export default class Header extends React.Component{
     render(){
         return (
             <div>
-                <AppBar
-                    title={<span className='title'>Title</span>}
-                    iconElementLeft={<IconButton onClick={this.navigationMenu}><NavigationMenu/></IconButton>}
-                    iconElementRight={this.state.logged ? <Logged /> : <Login />}
-                />
+                <AppBar title={<span className='title'>Title</span>}
+                        iconElementLeft={<IconButton onClick={this.navigationMenu}><NavigationMenu/></IconButton>}
+                        iconElementRight={this.state.logged ? <Logged /> : <Login />} />
 
                 <Drawer className="drawerPanel" open={this.state.handleDrawer} docked={false}>
                     <AppBar title="App" iconElementLeft={

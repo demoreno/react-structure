@@ -7,11 +7,16 @@ export function getInfo() {
         headers: {
           'Accept': 'application/json'
         }
+    }).then((response) => {
+        return response;
     });
 }
 
 export function getUsers() {    
-    return axios.get(config.API.getUsers);
+    return axios.get(config.API.getUsers)
+        .then((response) => {
+            return response;
+        });
 }
 
 export function removeUser(){

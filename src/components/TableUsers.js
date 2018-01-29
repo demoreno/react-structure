@@ -3,25 +3,6 @@ import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowCol
 
 export default class TableUsers extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.renderUsers = this.renderUsers.bind(this);
-    }
-
-    renderUsers(key){
-        const { users } = this.props;
-        const user = users[key];
-
-        return (
-            <TableRow>
-                <TableRowColumn>{user.id}</TableRowColumn>
-                <TableRowColumn>{user.email}</TableRowColumn>
-                <TableRowColumn>{user.phone}</TableRowColumn>
-                <TableRowColumn>{user.username}</TableRowColumn>
-            </TableRow>
-        );
-    }
-
     render(){
         const { users } = this.props;
 
@@ -36,7 +17,14 @@ export default class TableUsers extends React.Component{
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {Object.keys(users).map(this.renderUsers)}
+                {users.map((user) => (
+                    <TableRow>
+                        <TableRowColumn>{user.id}</TableRowColumn>
+                        <TableRowColumn>{user.email}</TableRowColumn>
+                        <TableRowColumn>{user.phone}</TableRowColumn>
+                        <TableRowColumn>{user.username}</TableRowColumn>
+                    </TableRow>
+                ))}
                 </TableBody>
             </Table>
         );

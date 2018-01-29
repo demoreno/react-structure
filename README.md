@@ -1,6 +1,12 @@
 # React Structure
 
-React Structure
+React Structure is a example project in ReactJs with include the following utilities:
+
+-[Redux Saga](https://github.com/redux-saga/redux-saga)
+-[HTTP Request](https://github.com/axios/axios)
+-[Routing](https://github.com/ReactTraining/react-router)
+-[Webpackv3](https://webpack.js.org/)
+-[Material Design](http://www.material-ui.com/)
 
 ### Prerequisites
 
@@ -17,12 +23,17 @@ Install via git clone
 ```
 
 
+
+
 ## Deployment
 
 ```
 1. $ cd react-structure
-2. $ npm start
+2. $ npm run build
+3. $ npm start
 ```
+
+Go to web browser and deploy the url http://localhost:3000
  
 ## Author
 

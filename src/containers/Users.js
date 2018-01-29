@@ -6,7 +6,7 @@ import {Card, CardActions, CardHeader} from 'material-ui/Card';
 import { requestUsers, deleteUsers } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
 import {CardText} from 'material-ui/Card';
-import TableUsers from './../components/TableUsers';
+import TableUsers from './../components/TableUsers'
 
 class Users extends React.Component{
 
@@ -31,7 +31,7 @@ class Users extends React.Component{
         return (
             [
                 <Header/>,
-                
+
                 <div className='main-content'>
                     <Card>
                         <CardHeader title="Users" actAsExpander={true}/>
