@@ -1,19 +1,40 @@
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+let extractPlugin = new ExtractTextPlugin({
+    filename: '/dist/css/app.css'
+});
+
 module.exports = {
-    entry: [
-        './src/js/app.js'
-    ],
+    entry: ['./src/index.js'],
     output: {
-        path: __dirname,
-        filename: 'bundle.js'
+        path: path.resolve(__dirname, 'dist/js'),
+        filename: 'app.js'
     },
-    module: {
-        loaders: [{
-            test: /\.jsx?$/,
-            exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-                presets: ['es2015','react']
+    module : {
+        rules: [
+            {
+                test: /(\.js|.jsx)$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
             }
-        }]
-    }
+        ]
+    },
+    devServer: {
+        host: 'localhost',
+        port: 3000,
+        inline: true,
+        historyApiFallback: true
+    },
+    plugins: [
+        extractPlugin
+        //new OpenBrowserPlugin({ url: 'http://localhost:3000' }),
+        /*new HtmlWebpackPlugin({
+            template: 'index.html',
+            filename: '../index.html',
+            inject: 'body'
+        })*/
+    ]
 };

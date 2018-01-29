@@ -1,0 +1,17 @@
+#root {
+  margin: -1% !important; }
+
+.main-content {
+  margin: 1%; }
+
+.title {
+  cursor: pointer; }
+
+.example h1 {
+  color: green; }
+
+.drawerPanel a {
+  text-decoration: none; }
+
+.app-main {
+  padding: 10px !important; }
