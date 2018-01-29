@@ -2,11 +2,11 @@
 
 React Structure is a example project in ReactJs with include the following utilities:
 
--[Redux Saga](https://github.com/redux-saga/redux-saga)
--[HTTP Request](https://github.com/axios/axios)
--[Routing](https://github.com/ReactTraining/react-router)
--[Webpackv3](https://webpack.js.org/)
--[Material Design](http://www.material-ui.com/)
+-[Redux Saga](https://github.com/redux-saga/redux-saga)__
+-[HTTP Request](https://github.com/axios/axios)__
+-[Routing](https://github.com/ReactTraining/react-router)__
+-[Webpackv3](https://webpack.js.org/)__
+-[Material Design](http://www.material-ui.com/)__
 
 ### Prerequisites
 
