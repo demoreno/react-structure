@@ -11,7 +11,8 @@ module.exports = {
     entry: ['./src/index.js'],
     output: {
         path: path.resolve(__dirname, 'dist/js'),
-        filename: 'app.js'
+        filename: 'app.js',
+        publicPath: "/dist/",
     },
     module : {
         rules: [
@@ -24,17 +25,18 @@ module.exports = {
     },
     devServer: {
         host: 'localhost',
+        //contentBase: './dist/',
         port: 3000,
         inline: true,
         historyApiFallback: true
     },
     plugins: [
-        extractPlugin
+        extractPlugin,
         //new OpenBrowserPlugin({ url: 'http://localhost:3000' }),
-        /*new HtmlWebpackPlugin({
-            template: 'index.html',
+        new HtmlWebpackPlugin({
+            template: __dirname + '/index.html',
             filename: '../index.html',
             inject: 'body'
-        })*/
+        })
     ]
 };
