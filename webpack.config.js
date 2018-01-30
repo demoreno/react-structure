@@ -1,6 +1,5 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let extractPlugin = new ExtractTextPlugin({
@@ -25,14 +24,13 @@ module.exports = {
     },
     devServer: {
         host: 'localhost',
-        //contentBase: './dist/',
+        contentBase: './dist/',
         port: 3000,
         inline: true,
         historyApiFallback: true
     },
     plugins: [
         extractPlugin,
-        //new OpenBrowserPlugin({ url: 'http://localhost:3000' }),
         new HtmlWebpackPlugin({
             template: __dirname + '/index.html',
             filename: '../index.html',
