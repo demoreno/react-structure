@@ -1,9 +1,8 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-let extractPlugin = new ExtractTextPlugin({
-    filename: '/dist/css/app.css'
+const extractSass = new ExtractTextPlugin({
+    filename: "../css/app.css",
 });
 
 module.exports = {
@@ -19,6 +18,18 @@ module.exports = {
                 test: /(\.js|.jsx)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
+            },
+            {
+                test: /\.scss$/,
+                use: extractSass.extract({
+                    use: [{
+                        loader: "css-loader"
+                    },
+                    {
+                        loader: "sass-loader"
+                    }],
+                    fallback: "style-loader"
+                })
             }
         ]
     },
@@ -30,7 +41,7 @@ module.exports = {
         historyApiFallback: true
     },
     plugins: [
-        extractPlugin,
+        extractSass,
         new HtmlWebpackPlugin({
             template: __dirname + '/index.html',
             filename: '../index.html',
