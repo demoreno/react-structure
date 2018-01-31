@@ -25,7 +25,7 @@ Install via git clone
 
 
 
-## Deployment Development
+## Deployment
 
 ```
 1. $ cd react-structure
@@ -33,13 +33,6 @@ Install via git clone
 3. $ npm start
 ```
 
-## Deployment Production
-
-```
-1. $ cd react-structure
-2. $ npm run build:dist
-3. $ npm run build
-```
 
 Go to web browser and deploy the url http://localhost:3000
  
