@@ -6,7 +6,10 @@ import {Card, CardActions, CardHeader} from 'material-ui/Card';
 import { requestUsers, deleteUsers } from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
 import {CardText} from 'material-ui/Card';
-import TableUsers from './../components/TableUsers'
+import TableUsers from './../components/TableUsers';
+import FormUser from './../components/FormUser';
+import { SubmissionError } from 'redux-form';
+import validator from 'validator';
 
 class Users extends React.Component{
 
@@ -15,6 +18,12 @@ class Users extends React.Component{
 
         this.handleClick = this.handleClick.bind(this);
         this.requestUsers = this.requestUsers.bind(this);
+        this.handleModalUser = this.handleModalUser.bind(this);
+        this.handleSubmitNewUsers = this.handleSubmitNewUsers.bind(this);
+
+        this.state = {
+            modalUser : false
+        }
     }
 
     requestUsers(){
@@ -23,6 +32,18 @@ class Users extends React.Component{
 
     handleClick(){
         this.props.deleteUsers();
+    }
+
+    handleModalUser() {
+        this.setState({modalUser: !this.state.modalUser});
+    }
+
+    handleSubmitNewUsers(values){
+        if(!validator.isEmail(values.email)){
+            throw new SubmissionError({
+                _error: 'Is not a email'
+            })
+        }
     }
 
     render(){
@@ -36,10 +57,15 @@ class Users extends React.Component{
                     <Card>
                         <CardHeader title="Users" actAsExpander={true}/>
 
+                        <FormUser onSubmit={this.handleSubmitNewUsers} modalUser={this.state.modalUser}
+                                  handleModalUser={this.handleModalUser}/>
+
                         <CardActions>
                             <RaisedButton label="Request Users" onClick={this.requestUsers} />
 
                             <RaisedButton label="Drop Users" onClick={this.handleClick} />
+
+                            <RaisedButton label="New User" onClick={this.handleModalUser} />
                         </CardActions>
 
                         {users.length > 0 &&

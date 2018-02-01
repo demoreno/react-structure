@@ -1,6 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const publicPath = '/dist/';
 const extractSass = new ExtractTextPlugin({
     filename: "../css/app.css",
 });
@@ -10,7 +11,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist/js'),
         filename: 'app.js',
-        publicPath: "/dist/",
+        publicPath: publicPath,
     },
     module : {
         rules: [
@@ -35,7 +36,7 @@ module.exports = {
     },
     devServer: {
         host: 'localhost',
-        contentBase: './dist/',
+        contentBase: '.' + publicPath,
         port: 3000,
         inline: true,
         historyApiFallback: true

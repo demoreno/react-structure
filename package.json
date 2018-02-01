@@ -6,6 +6,7 @@
     "axios": "^0.17.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-stage-2": "^6.24.1",
+    "file-loader": "^1.1.6",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-minify": "^2.1.0",
@@ -23,7 +24,10 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "redux": "^3.7.2",
-    "redux-saga": "^0.16.0"
+    "redux-form": "^7.2.1",
+    "redux-form-material-ui": "^4.3.3",
+    "redux-saga": "^0.16.0",
+    "validator": "^9.4.0"
   },
   "scripts": {
     "start": "webpack --progress && webpack-dev-server --inline --content-base dist/",
